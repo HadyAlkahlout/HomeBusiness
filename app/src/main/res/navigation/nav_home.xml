@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/myProductFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.mystore.MyProductFragment"
+        android:label="MyProductFragment" >
+        <action
+            android:id="@+id/action_myProductFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myStoreFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.mystore.MyStoreFragment"
+        android:label="fragment_my_store">
+        <action
+            android:id="@+id/action_myStoreFragment_to_myProductFragment"
+            app:destination="@id/myProductFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down"
+            />
+        <action
+            android:id="@+id/action_myStoreFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down"
+            />
+        <action
+            android:id="@+id/action_myStoreFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_myStoreFragment_to_editStoreFragment"
+            app:destination="@id/editStoreFragment" />
+        <action
+            android:id="@+id/action_myStoreFragment_to_myMessageFragment"
+            app:destination="@id/myMessageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.home.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_newProductFragment"
+            app:destination="@id/newProductFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_newStoreFragment"
+            app:destination="@id/newStoreFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_allSpacialStoresFragment"
+            app:destination="@id/allSpacialStoresFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_allSpacialStoryFragment"
+            app:destination="@id/allSpacialStoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+        <action
+            android:id="@+id/action_homeFragment_to_storeDetailsFragment"
+            app:destination="@id/storeDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.home.NotificationFragment"
+        android:label="NotificationFragment" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.category.CategoriesFragment"
+        android:label="CategoriesFragment">
+        <action
+            android:id="@+id/action_categoriesFragment_to_storeCategoryFragment"
+            app:destination="@id/storeCategoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/newProductFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.home.NewProductFragment"
+        android:label="NewProductFragment">
+        <action
+            android:id="@+id/action_newProductFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/newStoreFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.home.NewStoreFragment"
+        android:label="NewStoreFragment">
+        <action
+            android:id="@+id/action_newStoreFragment_to_storeDetailsFragment"
+            app:destination="@id/storeDetailsFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/allSpacialStoresFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.home.AllSpacialProductFragment"
+        android:label="AllSpacialStoresFragment">
+        <action
+            android:id="@+id/action_allSpacialStoresFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/allSpacialStoryFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.home.AllSpacialStoryFragment"
+        android:label="AllSpacialStoryFragment">
+        <action
+            android:id="@+id/action_allSpacialStoryFragment_to_storeDetailsFragment"
+            app:destination="@id/storeDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/storeCategoryFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.category.StoreCategoryFragment"
+        android:label="StoreCategoryFragment">
+        <action
+            android:id="@+id/action_storeCategoryFragment_to_storeDetailsFragment"
+            app:destination="@id/storeDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" />
+    <fragment
+        android:id="@+id/storeDetailsFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.store.StoreDetailsFragment"
+        android:label="StoreDetailsFragment">
+        <action
+            android:id="@+id/action_storeDetailsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+        <action
+            android:id="@+id/action_storeDetailsFragment_to_callFragment"
+            app:destination="@id/callFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostWantedFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.store.MostWantedFragment"
+        android:label="MostWantedFragment">
+        <action
+            android:id="@+id/action_mostWantedFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/callFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.store.CallFragment"
+        android:label="CallFragment" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.cart.CartFragment"
+        android:label="CartFragment">
+        <action
+            android:id="@+id/action_cartFragment_to_completeOrderFragment"
+            app:destination="@id/completeOrderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_cartFragment_to_completeOrderFragment2"
+            app:destination="@id/completeOrderFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/completeOrderFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.cart.CompleteOrderFragment"
+        android:label="CompleteOrderFragment">
+        <action
+            android:id="@+id/action_completeOrderFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+        <action
+            android:id="@+id/action_completeOrderFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.cart.CheckoutFragment"
+        android:label="CheckoutFragment" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.FavoriteFragment"
+        android:label="FavoriteFragment">
+        <action
+            android:id="@+id/action_favoritesFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.ProfileFragment"
+        android:label="ProfileFragment">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_addressFragment"
+            app:destination="@id/addressFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_myOrderFragment"
+            app:destination="@id/myOrderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_favoriteProfileFragment"
+            app:destination="@id/favoriteProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_questionFragment"
+            app:destination="@id/questionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_privacyFragment"
+            app:destination="@id/privacyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_editStoreFragment"
+            app:destination="@id/editStoreFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_myStoreFragment"
+            app:destination="@id/myStoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.EditProfileFragment"
+        android:label="EditProfileFragment" />
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.AddressFragment"
+        android:label="AddressFragment">
+        <action
+            android:id="@+id/action_addressFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.AddAddressFragment"
+        android:label="AddAddressFragment">
+        <action
+            android:id="@+id/action_addAddressFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.MapsFragment"
+        android:label="MapsFragment" />
+    <fragment
+        android:id="@+id/myOrderFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.MyOrderFragment"
+        android:label="MyOrderFragment" >
+        <action
+            android:id="@+id/action_myOrderFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteProfileFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.FavoriteProfileFragment"
+        android:label="FavoriteProfileFragment">
+        <action
+            android:id="@+id/action_favoriteProfileFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.QuestionFragment"
+        android:label="QuestionFragment">
+        <action
+            android:id="@+id/action_questionFragment_to_callFragment"
+            app:destination="@id/callFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/privacyFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.PrivacyFragment"
+        android:label="PrivacyFragment" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.SettingFragment"
+        android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/editStoreFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.profile.EditStoreFragment"
+        android:label="EditStoreFragment" />
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.mystore.AddProductFragment"
+        android:label="AddProductFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.home.SearchFragment"
+        android:label="SearchFragment">
+        <action
+            android:id="@+id/action_searchFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/myMessageFragment"
+        android:name="com.nurbk.ps.homebusness.ui.fragment.mystore.MyMessageFragment"
+        android:label="fragment_my_message"
+        tools:layout="@layout/fragment_my_message" />
+</navigation>

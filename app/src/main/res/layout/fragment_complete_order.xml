@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="72dp"
+                tools:layout_editor_absoluteY="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/complete_order"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.39528024" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_margin="16sp"
+                    android:paddingEnd="12dp"
+                    android:background="@drawable/bg_radio_btn"
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:text="@string/addAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtNamecart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:maxLength="20"
+                    android:text="@string/payment_method"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView15"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16dp"
+                    android:padding="4dp"
+                    android:layout_marginEnd="16sp"
+                    android:background="@drawable/bg_radio_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNamecart">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list_payment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/item_payment"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="3"
+                        />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.2dp"
+                        android:visibility="gone"
+                        android:layout_centerInParent="true"
+                        android:background="#619F9696" />
+
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                    <RadioButton
+                        android:id="@+id/radio_cash"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_marginStart="18sp"
+                        android:layout_marginEnd="18sp"
+                        android:layout_marginTop="6dp"
+                        android:text="كاش"
+                        android:textAlignment="center" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_marginStart="18sp"
+                        android:layout_marginEnd="18sp"
+                        android:layout_marginBottom="7dp"
+                        android:text="دفع ( رابط خارجي )"
+                        android:textAlignment="center" />
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1.2dp"
+                    android:layout_marginStart="18sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="18sp"
+                    android:background="@color/border2"
+                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+                    tools:layout_editor_absoluteX="0dp" />
+
+
+                <Button
+                    android:id="@+id/btn_add_promo_code"
+                    android:layout_width="80dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/add"
+                    android:textStyle="bold"
+                    app:cornerRadius="8sp"
+                    android:background="@drawable/bg_btn_100"
+                    app:layout_constraintEnd_toEndOf="@+id/line"
+                    app:layout_constraintTop_toBottomOf="@+id/line" />
+
+                <EditText
+                    android:id="@+id/etxt_promo_code"
+                    android:layout_width="0dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginEnd="8sp"
+                    android:background="@drawable/bg_radio_btn"
+                    android:hint="@string/discount_coupon"
+                    android:inputType="number"
+                    android:paddingStart="10dp"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_add_promo_code"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_add_promo_code"
+                    app:layout_constraintStart_toStartOf="@+id/line"
+                    app:layout_constraintTop_toTopOf="@+id/btn_add_promo_code" />
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1.2dp"
+                    android:layout_marginStart="18sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="18sp"
+                    android:background="@color/border2"
+                    app:layout_constraintTop_toBottomOf="@+id/etxt_promo_code"
+                    tools:layout_editor_absoluteX="0dp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_margin="16sp"
+                    android:background="@drawable/bg_radio_btn"
+                    app:layout_constraintTop_toBottomOf="@+id/line1"
+                    tools:layout_editor_absoluteX="16dp">
+
+
+                    <TextView
+                        android:id="@+id/total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/total"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txt_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="المجموع الفرعي"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/total"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/total" />
+
+
+                    <TextView
+                        android:id="@+id/delivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="12dp"
+                        tools:text="@string/delivry"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/total"
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_delivery_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        tools:text="المجموع الفرعي"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/delivery"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/delivery"
+                        tools:visibility="gone" />
+
+
+                    <TextView
+                        android:id="@+id/discount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/discount"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/view6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/delivery"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txt_discount_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="0"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/discount"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/discount" />
+
+
+                    <View
+                        android:id="@+id/view6"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.2dp"
+                        android:background="@color/border2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_delivery_cost"
+                        app:layout_constraintVertical_bias="0.554" />
+
+
+                    <TextView
+                        android:id="@+id/txt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:maxLength="20"
+                        android:text="@string/payment_method"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/discount"
+                        app:layout_constraintTop_toBottomOf="@+id/view6" />
+
+                    <TextView
+                        android:id="@+id/txt_total_with_promo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="المجموع الفرعي"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txt" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <Button
+                    android:id="@+id/btnCompeletOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/complete_order"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

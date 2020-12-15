@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8sp"
+    android:layout_marginTop="4sp"
+    android:layout_marginEnd="8sp"
+    android:padding="4sp"
+    android:id="@+id/all_card">
+
+    <com.rishabhharit.roundedimageview.RoundedImageView
+        android:id="@+id/imageFav"
+        android:layout_width="102dp"
+        android:layout_height="102dp"
+        android:src="@color/colorPrimary"
+        app:cornerRadius="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundedCorners="all" />
+
+    <TextView
+        android:id="@+id/txtNameFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:maxLength="25"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/imageFav"
+        app:layout_constraintTop_toTopOf="@+id/imageFav"
+        tools:text="سجق و بسطرمة" />
+
+    <TextView
+        android:id="@+id/txtDecFav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textColor="#A5A4A4"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnFavFav"
+        app:layout_constraintStart_toStartOf="@+id/txtNameFav"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameFav" />
+
+    <TextView
+        android:id="@+id/txtPriceFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageFav"
+        app:layout_constraintStart_toStartOf="@+id/txtDecFav"
+        app:layout_constraintTop_toBottomOf="@+id/txtDecFav" />
+
+
+    <Button
+        android:id="@+id/btnAddCartFav"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@drawable/bg_btn_100"
+        android:gravity="center"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/add_cart"
+        android:visibility="gone"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageFav"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/btnFavFav"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:minWidth="15dp"
+        android:minHeight="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtNameFav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtNameFav"
+        app:srcCompat="@drawable/ic_icon_awesome_heart" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8sp"
+        android:background="#60707070"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddCartFav"
+        tools:layout_editor_absoluteX="10dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

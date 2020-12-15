@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#C99ACB</color>
+    <color name="colorPrimaryDark">#722B79</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="navColor">#FBFBF9</color>
+
+    <color name="colorBull_1000">#722B79</color>
+    <color name="colorGray_1000">#a7a7a7</color>
+
+    <color name="border">#08000000</color>
+    <color name="border2">#619F9696</color>
+</resources>

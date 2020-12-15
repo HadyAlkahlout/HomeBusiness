@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "48575612853",
+    "firebase_url": "https://home-business-65d05.firebaseio.com",
+    "project_id": "home-business-65d05",
+    "storage_bucket": "home-business-65d05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48575612853:android:5771c9a7695531adae3bfc",
+        "android_client_info": {
+          "package_name": "com.nurbk.ps.homebusness"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48575612853-dnmfklgme8h5o1755k3vf5e3io1fltm1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nurbk.ps.homebusness",
+            "certificate_hash": "59e841b8a295303b613b55582afa88c3e39b7c76"
+          }
+        },
+        {
+          "client_id": "48575612853-udg9phuksk2mekpqpppnjp4l6mi3peo5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOq990jFxZ9Qgsic5FgJKnziXjGBwgrXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48575612853-udg9phuksk2mekpqpppnjp4l6mi3peo5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "48575612853-ag6i4mouttralata5qn5j1bunb3n5qnm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Raiyansoft.HomeBusiness",
+                "app_store_id": "1534480288"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

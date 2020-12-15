@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/edit_profile"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.39528024" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/btn_choose_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16sp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14sp"
+                        android:layout_marginTop="16dp"
+                        android:text="إضغط هنا لتعديل صورتك الشخصية"
+                        android:textAlignment="viewStart"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/tv_profile_img"
+                        app:layout_constraintTop_toTopOf="@+id/tv_profile_img" />
+
+                    <com.rishabhharit.roundedimageview.RoundedImageView
+                        android:id="@+id/tv_profile_img"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="20sp"
+                        android:src="@drawable/ic_launcher_background"
+                        app:cornerRadius="8sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:roundedCorners="all" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/editProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8sp"
+                    android:drawablePadding="24dp"
+                    android:paddingStart="25dp"
+                    android:paddingTop="18sp"
+                    android:paddingEnd="25dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/name"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginEnd="16sp"
+                    android:background="@drawable/bg_radio_btn"
+                    android:ems="10"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:padding="16sp"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@android:color/secondary_text_light"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="هادي الكحلوت" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="24dp"
+                    android:paddingStart="25dp"
+                    android:paddingTop="18sp"
+                    android:paddingEnd="25dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/phone_number"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginEnd="16sp"
+                    android:background="@drawable/bg_radio_btn"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:padding="16sp"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@android:color/secondary_text_light"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="55555489" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="24dp"
+                    android:paddingStart="25dp"
+                    android:paddingTop="18sp"
+                    android:paddingEnd="25dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/email"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginEnd="16sp"
+                    android:background="@drawable/bg_radio_btn"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="40"
+                    android:maxLines="1"
+                    android:padding="16sp"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@android:color/secondary_text_light"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="myname1998@gmail.com" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="24dp"
+                    android:paddingStart="25dp"
+                    android:paddingTop="18sp"
+                    android:paddingEnd="25dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/location_address"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginEnd="16sp"
+                    android:background="@drawable/bg_radio_btn"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:maxLength="40"
+                    android:maxLines="1"
+                    android:padding="16sp"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@android:color/secondary_text_light"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="العارضية" />
+
+                <Button
+                    android:id="@+id/btn_save_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="34dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_btn_100"
+                    android:text="@string/save"
+                    android:textColor="@android:color/black"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rcDataQuestion" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

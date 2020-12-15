@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:padding="10dp">
+
+        <com.rishabhharit.roundedimageview.RoundedImageView
+            android:id="@+id/imageProduct"
+            android:layout_width="102dp"
+            android:layout_height="102dp"
+            android:src="@color/colorPrimary"
+            app:cornerRadius="4dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:roundedCorners="all" />
+
+        <TextView
+            android:id="@+id/txtNameProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:maxLength="25"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/imageProduct"
+            app:layout_constraintTop_toTopOf="@+id/imageProduct"
+            tools:text="سجق و بسطرمة" />
+
+        <TextView
+            android:id="@+id/txtDecProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxWidth="180dp"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
+            android:textColor="#A5A4A4"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txtNameProduct"
+            app:layout_constraintTop_toBottomOf="@+id/txtNameProduct" />
+
+        <TextView
+            android:id="@+id/txtPriceProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageProduct"
+            app:layout_constraintStart_toStartOf="@+id/txtDecProduct"
+            tools:text="4.500دك" />
+
+
+        <Button
+            android:id="@+id/btnAddCartFav"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/bg_btn_100"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="@string/add_cart"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:fontFamily="@font/app_font"
+            app:layout_constraintBottom_toBottomOf="@+id/imageProduct"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnFavFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:minWidth="15dp"
+            android:minHeight="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtNameProduct"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtNameProduct"
+            />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="#60707070"
+            app:layout_constraintTop_toBottomOf="@+id/imageProduct"
+            tools:layout_editor_absoluteX="10dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
