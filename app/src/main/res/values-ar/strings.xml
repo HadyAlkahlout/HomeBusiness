@@ -22,7 +22,7 @@
     <string name="all">الكل</string>
     <string name="new_meals">أحدث المنتجات</string>
     <string name="new_stores">أحدث المتاجر</string>
-    <string name="spacial_meals">منتجات مميزة</string>
+    <string name="spacial_meals">أفضل العروض</string>
     <string name="spacial_stores">متاجر مميزة</string>
     <string name="lowest_price">الحد الأدنى للطلب :</string>
     <string name="rating">التقييم :</string>
@@ -144,6 +144,7 @@
     <string name="name_store">اسم المتجر</string>
     <string name="dec_store">النبذة</string>
     <string name="cate_one">القسم الرئيسي</string>
+    <string name="select_cate">اختر القسم</string>
     <string name="cate2">االقسم الأول</string>
     <string name="cate3">القسم الثاني</string>
     <string name="far_places">المناطق البعيدة</string>
@@ -153,7 +154,7 @@
     <string name="hours_work">ساعات عمل المتجر</string>
     <string name="send_whatsapp">استقبال اللأستفسارات واتس اب</string>
     <string name="call_to_know">استقبال اللأستفسارات اتصال</string>
-    <string name="delivery_day">مدة التوصيل</string>
+    <string name="delivery_day">مدة تجهيز الطلب</string>
     <string name="min_price">الحد الأدني</string>
     <string name="store_location">موقع المتجر ( اللوكيشن )</string>
     <string name="product_management">حفظ</string>
@@ -187,7 +188,7 @@
     <string name="errorGovernorate">يجب إضافة محافظة واحدة على الأقل</string>
     <string name="addPhotoStore">قم بإضافة صورة للمتجر</string>
     <string name="done">تم</string>
-    <string name="request">طلبك قيد المراجعة</string>
+    <string name="request">تم ارسال طلبك الى الادارة</string>
     <string name="follow">متابعة</string>
     <string name="unfollow">إلغاء المتابعة</string>
     <string name="search">بحث</string>
@@ -195,12 +196,15 @@
     <string name="emptyStore">لا يوجد وجبات في هذا المتجر</string>
     <string name="buyStore">لا يمكنك الشراء من أكثر من متجر في نفس الوقت</string>
     <string name="paymentCart">تم عملية الدفع بنجاح</string>
+    <string name="add_product">اضف منتج</string>
+    <string name="add_location_success">تمت إضافة اللوكيشن بنجاح</string>
 
     <string name="pleasetryagain">يرجى تشغيل ال Gps</string>
     <string name="tryagain">حاول مرة أخرى</string>
     <string name="updateProfileSuccessfuly">تم تحديث البيانات بنجاح</string>
     <string name="codeUnavailable">الكود غير صالح</string>
     <string name="my_message">رسائلي</string>
+    <string name="no_select">اختر قسم رجاءا !!</string>
 
     <string-array name="YN">
         <item>لا</item>

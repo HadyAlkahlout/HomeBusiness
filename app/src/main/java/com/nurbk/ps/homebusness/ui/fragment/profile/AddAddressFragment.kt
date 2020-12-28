@@ -228,7 +228,7 @@ class AddAddressFragment : Fragment(), CountryDialogFragment.OnClickCountry {
                     response.data?.let { data ->
                         dialog.dismiss()
                         if (data.status) {
-                            Log.e("eee added success", data.status.toString())
+                            Snackbar.make(requireView(), getString(R.string.add_location_success), Snackbar.LENGTH_SHORT).show()
                         }
                         Log.e("eee added success", data.status.toString())
                         Log.e("eee added success ss", response.message.toString())

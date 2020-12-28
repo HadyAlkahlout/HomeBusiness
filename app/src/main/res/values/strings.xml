@@ -21,7 +21,7 @@
     <string name="all">All</string>
     <string name="new_meals">Latest Products</string>
     <string name="new_stores">Latest Stores</string>
-    <string name="spacial_meals">Special Products</string>
+    <string name="spacial_meals">Best Offers</string>
     <string name="spacial_stores">Special Stores</string>
     <string name="lowest_price">Minimum order :</string>
     <string name="rating">Rating :</string>
@@ -145,6 +145,7 @@
     </string-array>
     <string name="name_store">Store name</string>
     <string name="dec_store">Store description</string>
+    <string name="select_cate">Select section</string>
     <string name="cate_one">The main section</string>
     <string name="cate2">section One</string>
     <string name="cate3">section Two</string>
@@ -155,7 +156,7 @@
     <string name="hours_work">Store opening hours</string>
     <string name="send_whatsapp">Receive WhatsApp inquiries</string>
     <string name="call_to_know">Receive inquiries contact</string>
-    <string name="delivery_day">Delivery time</string>
+    <string name="delivery_day">Processing time</string>
     <string name="min_price">Minimum</string>
     <string name="store_location">Store location (location)</string>
     <string name="product_management">Save</string>
@@ -189,7 +190,7 @@
     <string name="errorGovernorate">At least one Governorate must be added</string>
     <string name="addPhotoStore">Add a picture to the store</string>
     <string name="done">Done</string>
-    <string name="request">Your request is under review</string>
+    <string name="request">Your request has been sent to the administration</string>
     <string name="follow">Follow</string>
     <string name="unfollow">Un Follow</string>
     <string name="search">Search</string>
@@ -201,6 +202,9 @@
     <string name="tryagain">Try again</string>
     <string name="updateProfileSuccessfuly">Update Profile Successfuly</string>
     <string name="codeUnavailable">Promo Code is finish</string>
+    <string name="add_product">Add Product</string>
+    <string name="add_location_success">Adding Location Done Successfully</string>
+    <string name="no_select">Select Section Please !!</string>
 
     <string-array name="YN">
         <item>No</item>

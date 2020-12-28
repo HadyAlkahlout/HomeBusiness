@@ -6,6 +6,12 @@
 
     <data>
 
+        <variable
+            name="isEnableService"
+            type="Boolean" />
+
+        <import type="android.view.View"/>
+
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -68,7 +74,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:textColor="@android:color/white"
-
                 android:textSize="13sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/textView"
@@ -145,10 +150,9 @@
                 android:background="@drawable/bg_edit_text"
                 android:ems="10"
                 android:hint="@string/email"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:maxLength="50"
                 android:maxLines="1"
-
                 android:padding="15dp"
                 android:textColorHint="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -194,9 +198,9 @@
                 android:layout_margin="16dp"
                 android:background="@drawable/bg_edit_text"
                 android:gravity="center_vertical"
-                android:text="@string/cate2"
                 android:paddingStart="12dp"
                 android:paddingEnd="8dp"
+                android:text="@string/cate2"
                 android:textColor="@android:color/black"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -221,9 +225,9 @@
                 android:layout_margin="16dp"
                 android:background="@drawable/bg_edit_text"
                 android:gravity="center_vertical"
-                android:text="@string/cate3"
                 android:paddingStart="12dp"
                 android:paddingEnd="8dp"
+                android:text="@string/cate3"
                 android:textColor="@android:color/black"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -240,180 +244,6 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textViewTow"
                 app:layout_constraintEnd_toEndOf="@+id/textViewTow"
                 app:layout_constraintTop_toTopOf="@+id/textViewTow" />
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/bg_edit_text"
-                android:orientation="vertical"
-                android:padding="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-                <TextView
-                    android:id="@+id/btnAddRegion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="16sp"
-                    android:gravity="center_vertical"
-                    android:text="@string/far_places"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:drawableEndCompat="@drawable/ic_icon_ionic_ios_add_circle"
-                    app:layout_constraintBottom_toBottomOf="@+id/spinnerEditTow"
-                    app:layout_constraintStart_toStartOf="@+id/spinnerEditTow"
-                    app:layout_constraintTop_toTopOf="@+id/spinnerEditTow" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spinnerRegion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="8dp"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:padding="8dp"
-                        android:textColorHint="@android:color/black"
-                        android:textSize="12sp" />
-
-                    <EditText
-                        android:id="@+id/txtAddPriceRegion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="8dp"
-                        android:layout_weight="3"
-                        android:background="@drawable/bg_edit_text"
-                        android:ems="10"
-                        android:hint="@string/price"
-                        android:inputType="number"
-                        android:maxLength="4"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColorHint="@android:color/black"
-                        android:textSize="12sp" />
-
-                    <Button
-                        android:id="@+id/btnSaveRegion"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="8dp"
-                        android:layout_weight="3"
-                        android:background="@drawable/bg_btn_100"
-                        android:text="@string/save"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcDataRegion"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="24dp"
-                    tools:itemCount="3"
-                    tools:listitem="@layout/item_design_sort_m" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_edit_text"
-                android:orientation="vertical"
-                android:padding="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTow">
-
-                <TextView
-                    android:id="@+id/btnAddGover"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="16sp"
-                    android:gravity="center_vertical"
-                    android:text="@string/governorate"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:drawableEndCompat="@drawable/ic_icon_ionic_ios_add_circle"
-                    app:layout_constraintBottom_toBottomOf="@+id/spinnerEditTow"
-                    app:layout_constraintStart_toStartOf="@+id/spinnerEditTow"
-                    app:layout_constraintTop_toTopOf="@+id/spinnerEditTow" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spinnerGover"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="8dp"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:hint="@string/name_governorate"
-                        android:inputType="textPersonName"
-                        android:padding="8dp"
-                        android:textColorHint="@android:color/black"
-                        android:textSize="12sp" />
-
-                    <EditText
-                        android:id="@+id/txtAddPriceGover"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="8dp"
-                        android:layout_weight="3"
-                        android:background="@drawable/bg_edit_text"
-                        android:ems="10"
-                        android:hint="@string/price"
-                        android:inputType="number"
-                        android:maxLength="4"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textColorHint="@android:color/black"
-                        android:textSize="12sp" />
-
-                    <Button
-                        android:id="@+id/btnSaveGover"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="8dp"
-                        android:layout_weight="3"
-                        android:background="@drawable/bg_btn_100"
-                        android:text="@string/save"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcDataGover"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="24dp"
-                    tools:itemCount="3"
-                    tools:listitem="@layout/item_design_sort_m" />
-            </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/subscribe_container"
@@ -424,9 +254,8 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_edit_text"
                 android:padding="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTow"
                 tools:layout_editor_absoluteX="16dp">
-
 
                 <TextView
                     android:layout_width="match_parent"
@@ -453,6 +282,179 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="@{isEnableService ? View.VISIBLE : View.GONE, default = gone}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subscribe_container">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edit_text"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/btnAddGover"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16sp"
+                        android:gravity="center_vertical"
+                        android:text="@string/governorate"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:drawableEndCompat="@drawable/ic_icon_ionic_ios_add_circle"
+                        app:layout_constraintBottom_toBottomOf="@+id/spinnerEditTow"
+                        app:layout_constraintStart_toStartOf="@+id/spinnerEditTow"
+                        app:layout_constraintTop_toTopOf="@+id/spinnerEditTow" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/spinnerGover"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:layout_weight="2"
+                            android:ems="10"
+                            android:hint="@string/name_governorate"
+                            android:inputType="textPersonName"
+                            android:padding="8dp"
+                            android:textColorHint="@android:color/black"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:id="@+id/txtAddPriceGover"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:layout_weight="3"
+                            android:background="@drawable/bg_edit_text"
+                            android:ems="10"
+                            android:hint="@string/price"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@android:color/black"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/btnSaveGover"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:layout_weight="3"
+                            android:background="@drawable/bg_btn_100"
+                            android:text="@string/save"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcDataGover"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="24dp"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/item_design_sort_m" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/btnAddRegion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16sp"
+                        android:gravity="center_vertical"
+                        android:text="@string/far_places"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:drawableEndCompat="@drawable/ic_icon_ionic_ios_add_circle"
+                        app:layout_constraintBottom_toBottomOf="@+id/spinnerEditTow"
+                        app:layout_constraintStart_toStartOf="@+id/spinnerEditTow"
+                        app:layout_constraintTop_toTopOf="@+id/spinnerEditTow" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/spinnerRegion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:layout_weight="2"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:padding="8dp"
+                            android:textColorHint="@android:color/black"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:id="@+id/txtAddPriceRegion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:layout_weight="3"
+                            android:background="@drawable/bg_edit_text"
+                            android:ems="10"
+                            android:hint="@string/price"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@android:color/black"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/btnSaveRegion"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:layout_weight="3"
+                            android:background="@drawable/bg_btn_100"
+                            android:text="@string/save"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcDataRegion"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="24dp"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/item_design_sort_m" />
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/recive_order"
@@ -464,7 +466,7 @@
                 android:background="@drawable/bg_edit_text"
                 android:orientation="vertical"
                 android:padding="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/subscribe_container"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
                 tools:layout_editor_absoluteX="16dp">
 
                 <LinearLayout

@@ -77,7 +77,6 @@ class MapDialog(val onClick: OnClickSaveLocationMap) : DialogFragment() {
             }
         }
 
-
         viewModel.dataMapLiveData.observe(viewLifecycleOwner, {
             if (it != null) {
                 googleMap.addMarker(MarkerOptions().position(it).title("Your Current Location"))
@@ -85,7 +84,6 @@ class MapDialog(val onClick: OnClickSaveLocationMap) : DialogFragment() {
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(it, 12F))
             }
         })
-
 
     }
 

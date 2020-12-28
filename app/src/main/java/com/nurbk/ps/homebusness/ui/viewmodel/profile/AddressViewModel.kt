@@ -29,7 +29,7 @@ import retrofit2.Response
 import timber.log.Timber
 import java.io.IOException
 
-class AddressViewModel(application: Application):AndroidViewModel(application){
+class AddressViewModel(application: Application) : AndroidViewModel(application) {
 
 
     val TAG = "AddressViewModel"
@@ -55,12 +55,12 @@ class AddressViewModel(application: Application):AndroidViewModel(application){
     }
 
     private suspend fun getAddress(
-        Authorization: String,lang:String
+            Authorization: String, lang: String
     ) {
         dataAddressLiveData.postValue(Resource.Loading())
         try {
             val response = repository
-                .getAddress(Authorization,lang)
+                    .getAddress(Authorization, lang)
 
             dataAddressLiveData.postValue(getAddress(response))
             Timber.e("$TAG getAddress-> OK")
@@ -85,8 +85,8 @@ class AddressViewModel(application: Application):AndroidViewModel(application){
             response.body()?.let { resultResponse ->
 
                 Timber.e("$TAG v->page->$address")
-                    address = resultResponse
-                    Timber.d("$TAG getAddress->Favorite->$address")
+                address = resultResponse
+                Timber.d("$TAG getAddress->Favorite->$address")
 
                 Timber.e("$TAG getAddress-> Resource.Success->$resultResponse")
                 return Resource.Success(address ?: resultResponse)
@@ -96,24 +96,19 @@ class AddressViewModel(application: Application):AndroidViewModel(application){
         return Resource.Error(response.message())
     }
 
-
     fun getAddress() = viewModelScope.launch {
         getAddress(
-            share.getString(Constant.TOKEN,"").toString(),"ar"
+                share.getString(Constant.TOKEN, "").toString(), "ar"
         )
     }
 
-
-
-
-
     private suspend fun PostAddress(
-        donate: Content, Authorization: String
+            donate: Content, Authorization: String
     ) {
         dataPostAddressLiveData.postValue(Resource.Loading())
         try {
             val response = repository
-                .postAddress(donate, Authorization, share.getString(Constant.LANG, "ar").toString())
+                    .postAddress(donate, Authorization, share.getString(Constant.LANG, "ar").toString())
 
             dataPostAddressLiveData.postValue(PostAddress(response))
             Timber.d("$TAG getDonation-> OK")
@@ -147,24 +142,20 @@ class AddressViewModel(application: Application):AndroidViewModel(application){
         return Resource.Error(response.message())
     }
 
-
     fun PostAddress(address: Content) =
-        viewModelScope.launch {
-            PostAddress(
-                address,share.getString(Constant.TOKEN,"").toString()
-            )
-        }
-
-
-
+            viewModelScope.launch {
+                PostAddress(
+                        address, share.getString(Constant.TOKEN, "").toString()
+                )
+            }
 
     private suspend fun UpdateAddress(
-        donate: Content, Authorization: String
+            donate: Content, Authorization: String
     ) {
         dataUpdateAddressLiveData.postValue(Resource.Loading())
         try {
             val response = repository
-                .updateAddress(donate, Authorization, share.getString(Constant.LANG, "ar").toString())
+                    .updateAddress(donate, Authorization, share.getString(Constant.LANG, "ar").toString())
 
             dataUpdateAddressLiveData.postValue(UpdateAddress(response))
             Timber.d("$TAG getDonation-> OK")
@@ -198,26 +189,20 @@ class AddressViewModel(application: Application):AndroidViewModel(application){
         return Resource.Error(response.message())
     }
 
-
     fun UpdateAddress(address: Content) =
-        viewModelScope.launch {
-            UpdateAddress(
-                address,share.getString(Constant.TOKEN,"").toString()
-            )
-        }
-
-
-
-
+            viewModelScope.launch {
+                UpdateAddress(
+                        address, share.getString(Constant.TOKEN, "").toString()
+                )
+            }
 
     private suspend fun deleteCase(
-        Authorization: String, id:String
-
+            Authorization: String, id: String
     ) {
         dataDeleteAddressLiveData.postValue(Resource.Loading())
         try {
             val response = repository
-                .deleteAddress(Authorization,"ar",id)
+                    .deleteAddress(Authorization, "ar", id)
 
             dataDeleteAddressLiveData.postValue(deleteCase(response))
             Timber.d("$TAG deleteCase-> OK")
@@ -251,14 +236,11 @@ class AddressViewModel(application: Application):AndroidViewModel(application){
         return Resource.Error(response.message())
     }
 
-
-    fun deleteAddress(id:String) = viewModelScope.launch {
+    fun deleteAddress(id: String) = viewModelScope.launch {
         deleteCase(
-            share.getString(Constant.TOKEN,"").toString(), id
+                share.getString(Constant.TOKEN, "").toString(), id
         )
     }
-
-
 
     fun requestPermission(context: Context) {
         Dexter.withContext(context)
@@ -266,9 +248,8 @@ class AddressViewModel(application: Application):AndroidViewModel(application){
                 .withListener(object : PermissionListener {
 
                     override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-
                         dataGetPrimistionLiveData.postValue(true)
-                                }
+                    }
 
 
                     override fun onPermissionRationaleShouldBeShown(
@@ -276,21 +257,20 @@ class AddressViewModel(application: Application):AndroidViewModel(application){
                             token: PermissionToken?
                     ) {
                         token!!.continuePermissionRequest()
-                        Log.e("eee","nust be show")
+                        Log.e("eee", "nust be show")
                         dataGetPrimistionLiveData.postValue(false)
                     }
 
                     override fun onPermissionDenied(response: PermissionDeniedResponse?) {
-                        Toast.makeText(context,"No", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "No", Toast.LENGTH_SHORT).show()
                         dataGetPrimistionLiveData.postValue(false)
                     }
-                }).check();
+                }).check()
     }
-
 
     init {
-       getAddress()
+        getAddress()
     }
-    
-    
+
+
 }

@@ -91,16 +91,12 @@ class EditStoreFragment : Fragment(),
             executePendingBindings()
         }
 
-
-
         return mBinding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         viewModelRegion.dataCityLiveData.observe(viewLifecycleOwner, Observer {
             when (it) {
@@ -198,8 +194,10 @@ class EditStoreFragment : Fragment(),
                                             Constant.dialog.hide()
 
                                             if (data.status) {
-
-                                                categorySub1Adapter.dataSource = data.data
+                                                var names = ArrayList<Data>()
+                                                names.add(0, Data(0, ArrayList(), getString(R.string.select_cate), ""))
+                                                names.addAll(data.data as ArrayList<Data>)
+                                                categorySub1Adapter.dataSource = names
                                                 categorySub1Adapter.notifyDataSetChanged()
 
                                             }
@@ -297,21 +295,30 @@ class EditStoreFragment : Fragment(),
                 }
             }
 
+        mBinding.spnnerDelivery.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    mBinding.isEnableService = position != 0
+                }
 
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+            }
 
         mBinding.spinnerEditOne.adapter = categorySub1Adapter
         mBinding.spinnerEditTow.adapter = categorySub1Adapter
-
-
-
-
 
         mBinding.spinnerGover.adapter = spinnerAdapter
         mBinding.spinnerRegion.adapter = regionsAdapter
         btn_back.setOnClickListener {
             findNavController().navigateUp()
         }
-
 
         val timePickerDialogStart = TimePickerDialog(
             requireContext(),
@@ -326,7 +333,7 @@ class EditStoreFragment : Fragment(),
                 mBinding.txtFinshStory.setText("${hourOfDay}:${minutes}")
             }, 0, 0, false
         )
-////////////////////
+
         viewModel.dataMarketLiveData.observe(
             viewLifecycleOwner,
             Observer { response ->
@@ -361,19 +368,14 @@ class EditStoreFragment : Fragment(),
                 }
             })
 
-
         mBinding.btnSaveStore.setOnClickListener {
             editStore()
-
         }
+
         mBinding.btnSaveGover.setOnClickListener {
             val nameGover = mBinding.spinnerGover.selectedItem as Data
             val price = mBinding.txtAddPriceGover.text.toString()
-
-
-
-
-            if (price.isEmpty()) {
+            if (mBinding.linearLayout5.isVisible && price.isEmpty()) {
                 mBinding.txtAddPriceGover.error = getString(R.string.errorMessage)
                 mBinding.txtAddPriceGover.requestFocus()
                 return@setOnClickListener
@@ -382,24 +384,18 @@ class EditStoreFragment : Fragment(),
             mBinding.txtAddPriceGover.text.clear()
             cityAdapter.data.add(nameGover)
             cityAdapter.notifyDataSetChanged()
-
         }
-
 
         mBinding.btnSaveRegion.setOnClickListener {
             val nameRegion = mBinding.spinnerRegion.selectedItem as Data
             val priceRegion = mBinding.txtAddPriceRegion.text.toString()
-
-
-            if (priceRegion.isEmpty()) {
+            if (mBinding.linearLayout5.isVisible && priceRegion.isEmpty()) {
                 mBinding.txtAddPriceRegion.error = getString(R.string.errorMessage)
                 mBinding.txtAddPriceRegion.requestFocus()
                 return@setOnClickListener
             }
-
             regionAdapter.data.add(Region(nameRegion.id, nameRegion.title, priceRegion))
             regionAdapter.notifyDataSetChanged()
-
         }
 
         mBinding.rcDataGover.apply {
@@ -415,10 +411,10 @@ class EditStoreFragment : Fragment(),
         }
 
         mBinding.txtStartStore.setOnClickListener {
-            timePickerDialogStart.show();
+            timePickerDialogStart.show()
         }
         mBinding.txtFinshStory.setOnClickListener {
-            timePickerDialogClose.show();
+            timePickerDialogClose.show()
         }
 
         mBinding.txtLocationStore.setOnClickListener {
@@ -452,22 +448,26 @@ class EditStoreFragment : Fragment(),
             mBinding.txtEditEmail.setText("")
             mBinding.txtEditDescription.setText(data.note)
 
-
-            getItemPosition(categoryAdapter.dataSource
-                , data.catId?:-1
-                , mBinding.spineerEditMain)
-
-            getItemPosition(
-                categorySub1Adapter.dataSource,
-                data.subCatId?:-1,
-                mBinding.spinnerEditOne
-            )
-            getItemPosition(
-                categorySub1Adapter.dataSource,
-                data.subCatId2?:-1,
-                mBinding.spinnerEditTow
-            )
             mBinding.spnnerDelivery.setSelection(data.delivery?:-1)
+            if (data.delivery == 0){
+                mBinding.isEnableService = false
+            }else if (data.delivery == 1){
+                mBinding.isEnableService = true
+                getItemPosition(categoryAdapter.dataSource
+                        , data.catId?:-1
+                        , mBinding.spineerEditMain)
+
+                getItemPosition(
+                        categorySub1Adapter.dataSource,
+                        data.subCatId?:-1,
+                        mBinding.spinnerEditOne
+                )
+                getItemPosition(
+                        categorySub1Adapter.dataSource,
+                        data.subCatId2?:-1,
+                        mBinding.spinnerEditTow
+                )
+            }
 
             // TODO : not in Api
             mBinding.spinnerReceive.setSelection(0)
@@ -517,8 +517,6 @@ class EditStoreFragment : Fragment(),
     private var partImage = MultipartBody.Part.createFormData("", "", toRequestBody(""))
 
     private fun editStore() {
-
-
         val name = mBinding.txtEditName.text.toString()
         val description = mBinding.txtEditDescription.text.toString()
         val email = mBinding.txtEditEmail.text.toString()
@@ -547,10 +545,15 @@ class EditStoreFragment : Fragment(),
                 mBinding.spinnerEditOne.selectedItem as com.nurbk.ps.homebusness.model.DataCategories.Data
             val mainTow =
                 mBinding.spinnerEditTow.selectedItem as com.nurbk.ps.homebusness.model.DataCategories.Data
-            map["sub_cat_id"] = toRequestBody(mainOne.id.toString())
-            map["sub_cat_id_2"] = toRequestBody(mainTow.id.toString())
 
-            Log.e("mainOne", "${mainOne.id}")
+            if (mBinding.spinnerEditOne.selectedItemPosition == 0){
+                Snackbar.make(requireView(), getString(R.string.no_select), Snackbar.LENGTH_SHORT).show()
+            }else{
+                map["sub_cat_id"] = toRequestBody(mainOne.id.toString())
+            }
+            if (mBinding.spinnerEditTow.selectedItemPosition != 0){
+                map["sub_cat_id_2"] = toRequestBody(mainTow.id.toString())
+            }
         }
 
         if (name.isEmpty()) {
@@ -651,17 +654,19 @@ class EditStoreFragment : Fragment(),
         map["delivery_time"] = toRequestBody(deliveryTime.id.toString())
         map["min_order"] = toRequestBody(price)
 
-        for ((i, cities) in cityAdapter.data.withIndex()) {
+        if (mBinding.spnnerDelivery.selectedItemPosition == 1){
+            for ((i, cities) in cityAdapter.data.withIndex()) {
 
-            map["cities[$i][city_id]"] = toRequestBody((cities as Data).id.toString())
-            map["cities[$i][price]"] = toRequestBody(cities.price)
+                map["cities[$i][city_id]"] = toRequestBody((cities as Data).id.toString())
+                map["cities[$i][price]"] = toRequestBody(cities.price)
+            }
+
+            for ((i, cities) in regionAdapter.data.withIndex()) {
+                map["regions[$i][region_id]"] = toRequestBody((cities as Region).id.toString())
+                map["regions[$i][price]"] = toRequestBody(cities.price)
+            }
+
         }
-
-        for ((i, cities) in regionAdapter.data.withIndex()) {
-            map["regions[$i][region_id]"] = toRequestBody((cities as Region).id.toString())
-            map["regions[$i][price]"] = toRequestBody(cities.price)
-        }
-
         if (file != null) {
             val imagefile = File(getRealPathFromURI(requireContext(), Uri.parse(file)!!)!!)
             val reqBody = RequestBody.create("image".toMediaTypeOrNull(), imagefile)
@@ -718,7 +723,6 @@ class EditStoreFragment : Fragment(),
             file = data!!.data.toString()
             mBinding.btnAddImage.setImageURI(data.data)
         }
-
     }
 
 

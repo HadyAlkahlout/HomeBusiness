@@ -15,8 +15,6 @@ import timber.log.Timber
 class ConfirmLocationFragment(val onGo: GoFragmentMessage) :
     DialogFragment() {
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,10 +29,6 @@ class ConfirmLocationFragment(val onGo: GoFragmentMessage) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupClickListeners(view)
-
-
-
-
     }
 
     override fun onStart() {
@@ -45,12 +39,7 @@ class ConfirmLocationFragment(val onGo: GoFragmentMessage) :
         )
     }
 
-
-
-
     private fun setupClickListeners(view: View) {
-
-
         view.btnYea.setOnClickListener {
             onGo.onClick(1)
             dismiss()
@@ -59,11 +48,7 @@ class ConfirmLocationFragment(val onGo: GoFragmentMessage) :
         view.btnNo.setOnClickListener {
             dismiss()
         }
-
-
     }
-
-
 
     interface GoFragmentMessage {
         fun onClick(type: Int)

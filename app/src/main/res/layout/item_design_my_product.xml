@@ -29,6 +29,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:roundedCorners="all" />
 
+        <com.rishabhharit.roundedimageview.RoundedImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="2dp"
+            android:src="@drawable/logo_white"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:roundedCorners="all" />
+
         <TextView
             android:id="@+id/txtNameProduct"
             android:layout_width="wrap_content"

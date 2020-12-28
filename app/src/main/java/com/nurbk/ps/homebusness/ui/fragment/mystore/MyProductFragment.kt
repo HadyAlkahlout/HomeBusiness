@@ -20,6 +20,9 @@ import com.nurbk.ps.homebusness.ui.viewmodel.store.MyStoreViewModel
 import com.nurbk.ps.homebusness.util.Constant
 import com.nurbk.ps.homebusness.util.Resource
 import kotlinx.android.synthetic.main.fragment_my_product.*
+import kotlinx.android.synthetic.main.fragment_my_product.btn_move_to_add_product
+import kotlinx.android.synthetic.main.fragment_my_product.toolbar
+import kotlinx.android.synthetic.main.fragment_my_store.*
 import timber.log.Timber
 
 
@@ -116,6 +119,15 @@ class MyProductFragment : Fragment(), MyProductAdapter.OnClickItem,
         })
 
         list_myProduct.adapter = adapter_product
+
+        mBinding.btnMoveToAddProduct.setOnClickListener {
+            findNavController().navigate(
+                    R.id.action_myProductFragment_to_addProductFragment,
+                    Bundle().apply {
+                        putString("idCate", "")
+                    })
+
+        }
 
     }
 

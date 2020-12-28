@@ -18,7 +18,18 @@
             android:scaleType="centerCrop"
             app:cornerRadius="16sp"
             app:roundedCorners="topRight|bottomRight"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.rishabhharit.roundedimageview.RoundedImageView
+            android:layout_width="140dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:cornerRadius="16sp"
+            app:roundedCorners="topRight|bottomRight"
+            android:src="@drawable/logo_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

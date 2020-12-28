@@ -168,8 +168,7 @@
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
                     android:textColor="@android:color/black"
-                    tools:ignore="RtlSymmetry"
-                    tools:text="هادي الكحلوت" />
+                    tools:ignore="RtlSymmetry" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -193,7 +192,7 @@
                     android:paddingEnd="15dp"
                     android:textColor="@android:color/black"
                     tools:ignore="RtlSymmetry"
-                    tools:text="هادي الكحلوت" />
+                    tools:text="" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -217,7 +216,7 @@
                     android:paddingEnd="15dp"
                     android:textColor="@android:color/black"
                     tools:ignore="RtlSymmetry"
-                    tools:text="هادي الكحلوت" />
+                    tools:text="" />
 
 
                 <TextView
@@ -242,7 +241,7 @@
                     android:paddingEnd="15dp"
                     android:textColor="@android:color/black"
                     tools:ignore="RtlSymmetry"
-                    tools:text="هادي الكحلوت" />
+                    tools:text="" />
 
 
                 <TextView
@@ -267,7 +266,7 @@
                     android:paddingEnd="15dp"
                     android:textColor="@android:color/black"
                     tools:ignore="RtlSymmetry"
-                    tools:text="هادي الكحلوت" />
+                    tools:text="" />
 
 
                 <TextView
@@ -293,7 +292,7 @@
                     android:paddingEnd="15dp"
                     android:textColor="@android:color/black"
                     tools:ignore="RtlSymmetry"
-                    tools:text="هادي الكحلوت" />
+                    tools:text="" />
 
 
                 <Button

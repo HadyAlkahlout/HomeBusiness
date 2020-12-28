@@ -161,7 +161,7 @@ class AddProductFragment : Fragment(), AddImageAdapter.CancelClick {
 
             map["id"] = toRequestBody(data.id.toString())
             mBinding.productName.setText(data.title)
-            mBinding.etxtCount.setText("45")
+            mBinding.etxtCount.setText("")
             mBinding.etxtPrice.setText(data.price)
             mBinding.etxtProductDescription.setText(data.note)
 
@@ -279,11 +279,6 @@ class AddProductFragment : Fragment(), AddImageAdapter.CancelClick {
             return
         }
 
-        if (count.isEmpty()) {
-            mBinding.etxtCount.error = getString(R.string.errorMessage)
-            mBinding.etxtCount.requestFocus()
-            return
-        }
         if (price.isEmpty()) {
             mBinding.etxtCount.error = getString(R.string.errorMessage)
             mBinding.etxtCount.requestFocus()
@@ -315,7 +310,9 @@ class AddProductFragment : Fragment(), AddImageAdapter.CancelClick {
         map["note"] = toRequestBody(dec)
         map["cat_id"] = toRequestBody(category.id.toString())
         map["price"] = toRequestBody(price)
-        map["quantity"] = toRequestBody(count)
+        if (count.isEmpty()) {
+            map["quantity"] = toRequestBody(count)
+        }
 
         viewModel.addProducts(map, mapimage, i)
 
