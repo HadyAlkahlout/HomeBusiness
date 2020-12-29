@@ -120,21 +120,27 @@
                     app:popupTheme="@style/AppTheme.PopupOverlay"
                     app:title=" ">
 
-                    <TextView
-                        android:id="@+id/titleStore"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:elevation="3dp"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/app_font"
-                        android:maxLines="1"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:translationY="-15dp"
-                        tools:text="@string/contact" />
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/titleStore"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:elevation="3dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/app_font"
+                            android:maxLines="1"
+                            android:textAlignment="viewStart"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            tools:text="@string/contact" />
+                    </LinearLayout>
                 </androidx.appcompat.widget.Toolbar>
 
                 <com.google.android.material.tabs.TabLayout

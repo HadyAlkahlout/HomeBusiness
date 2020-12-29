@@ -14,6 +14,7 @@ import com.nurbk.ps.homebusness.R
 import com.nurbk.ps.homebusness.adapter.ImageSliderAdapter
 import com.nurbk.ps.homebusness.databinding.FragmentProductDetailsBinding
 import com.nurbk.ps.homebusness.model.ClassID
+import com.nurbk.ps.homebusness.ui.fragment.dialog.CartDialogFragment
 import com.nurbk.ps.homebusness.ui.viewmodel.ProductDetailsViewModel
 import com.nurbk.ps.homebusness.util.Constant
 import com.nurbk.ps.homebusness.util.Constant.DETAILS_PRODUCT
@@ -23,7 +24,7 @@ import com.nurbk.ps.homebusness.util.Resource
 import okhttp3.RequestBody
 import timber.log.Timber
 
-class ProductDetailsFragment : Fragment() {
+class ProductDetailsFragment : Fragment(), CartDialogFragment.CartGoClick {
 
     private lateinit var mBinding: FragmentProductDetailsBinding
 
@@ -276,7 +277,7 @@ class ProductDetailsFragment : Fragment() {
 
             if (getShare.getString(MARKET_ID, "")!!.toString().isEmpty()
                 || getShare.getString(MARKET_ID, "")!!.toString() == marketId ||
-                    getShare.getString(MARKET_ID, "")!!.toString() == ""
+                getShare.getString(MARKET_ID, "")!!.toString() == ""
             ) {
                 map["cart[0][item_id]"] = toRequestBody(productId)
                 map["cart[0][number]"] = toRequestBody(counter.toString())
@@ -285,14 +286,14 @@ class ProductDetailsFragment : Fragment() {
                 viewModel.addCarts(map)
                 getShare.edit().putString(MARKET_ID, marketId).apply()
             } else {
-                Snackbar.make(
-                    mBinding.root,
-                    getString(R.string.buyStore),
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                CartDialogFragment(this).show(requireActivity().supportFragmentManager, "cart")
             }
         }
 
+    }
+
+    override fun onClickCart() {
+        findNavController().navigate(R.id.action_productDetailsFragment_to_cartFragment)
     }
 
 

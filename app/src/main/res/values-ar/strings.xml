@@ -111,7 +111,7 @@
     <string name="ball">تنبيه</string>
     <string name="share">مشاركة</string>
     <string name="add_cart">أضف للسلة</string>
-    <string name="dk">  %s دك</string>
+    <string name="dk">دك</string>
     <string name="contact">اتصال بالمتجر</string>
     <string name="whatsApp">ارسال واتساب</string>
     <string name="SendingaMessage">ارسال رسالة</string>
@@ -194,9 +194,10 @@
     <string name="search">بحث</string>
     <string name="searchResult">لا يوجد نتائج بحث</string>
     <string name="emptyStore">لا يوجد وجبات في هذا المتجر</string>
-    <string name="buyStore">لا يمكنك الشراء من أكثر من متجر في نفس الوقت</string>
+    <string name="buyStore">لا يمكنك إضافة منتجات من أكثر من متجر في السلة، هل تريد إزالة محتويات السلة الحالية وإضافة الجديد؟</string>
     <string name="paymentCart">تم عملية الدفع بنجاح</string>
     <string name="add_product">اضف منتج</string>
+    <string name="go_cart">الذهاب للسلة</string>
     <string name="add_location_success">تمت إضافة اللوكيشن بنجاح</string>
 
     <string name="pleasetryagain">يرجى تشغيل ال Gps</string>

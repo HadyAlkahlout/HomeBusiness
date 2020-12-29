@@ -51,7 +51,6 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-
 class EditStoreFragment : Fragment(),
     AddCityAdapter.OnClickItemListener, MapDialog.OnClickSaveLocationMap {
 
@@ -194,12 +193,20 @@ class EditStoreFragment : Fragment(),
                                             Constant.dialog.hide()
 
                                             if (data.status) {
-                                                var names = ArrayList<Data>()
-                                                names.add(0, Data(0, ArrayList(), getString(R.string.select_cate), ""))
-                                                names.addAll(data.data as ArrayList<Data>)
+                                                var names =
+                                                    ArrayList<com.nurbk.ps.homebusness.model.DataCategories.Data>()
+                                                names.add(
+                                                    0,
+                                                    com.nurbk.ps.homebusness.model.DataCategories.Data(
+                                                        0,
+                                                        "",
+                                                        0,
+                                                        getString(R.string.select_cate)
+                                                    )
+                                                )
+                                                names.addAll(data.data as ArrayList<com.nurbk.ps.homebusness.model.DataCategories.Data>)
                                                 categorySub1Adapter.dataSource = names
                                                 categorySub1Adapter.notifyDataSetChanged()
-
                                             }
                                         }
                                     }
@@ -294,7 +301,7 @@ class EditStoreFragment : Fragment(),
 
                 }
             }
-
+        mBinding.spnnerDelivery.setSelection(0)
         mBinding.spnnerDelivery.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
@@ -448,24 +455,24 @@ class EditStoreFragment : Fragment(),
             mBinding.txtEditEmail.setText("")
             mBinding.txtEditDescription.setText(data.note)
 
-            mBinding.spnnerDelivery.setSelection(data.delivery?:-1)
-            if (data.delivery == 0){
+            mBinding.spnnerDelivery.setSelection(data.delivery ?: -1)
+            if (data.delivery == 0) {
                 mBinding.isEnableService = false
-            }else if (data.delivery == 1){
+            } else if (data.delivery == 1) {
                 mBinding.isEnableService = true
-                getItemPosition(categoryAdapter.dataSource
-                        , data.catId?:-1
-                        , mBinding.spineerEditMain)
+                getItemPosition(
+                    categoryAdapter.dataSource, data.catId ?: -1, mBinding.spineerEditMain
+                )
 
                 getItemPosition(
-                        categorySub1Adapter.dataSource,
-                        data.subCatId?:-1,
-                        mBinding.spinnerEditOne
+                    categorySub1Adapter.dataSource,
+                    data.subCatId ?: -1,
+                    mBinding.spinnerEditOne
                 )
                 getItemPosition(
-                        categorySub1Adapter.dataSource,
-                        data.subCatId2?:-1,
-                        mBinding.spinnerEditTow
+                    categorySub1Adapter.dataSource,
+                    data.subCatId2 ?: -1,
+                    mBinding.spinnerEditTow
                 )
             }
 
@@ -488,8 +495,8 @@ class EditStoreFragment : Fragment(),
             val geocoder = Geocoder(requireContext(), Locale.getDefault())
 
             val addresses = geocoder.getFromLocation(
-                data.lat?.toDouble()?:0.0,
-                data.lng?.toDouble()?:0.0,
+                data.lat?.toDouble() ?: 0.0,
+                data.lng?.toDouble() ?: 0.0,
                 1
             )
             try {
@@ -546,12 +553,13 @@ class EditStoreFragment : Fragment(),
             val mainTow =
                 mBinding.spinnerEditTow.selectedItem as com.nurbk.ps.homebusness.model.DataCategories.Data
 
-            if (mBinding.spinnerEditOne.selectedItemPosition == 0){
-                Snackbar.make(requireView(), getString(R.string.no_select), Snackbar.LENGTH_SHORT).show()
-            }else{
+            if (mBinding.spinnerEditOne.selectedItemPosition == 0) {
+                Snackbar.make(requireView(), getString(R.string.no_select), Snackbar.LENGTH_SHORT)
+                    .show()
+            } else {
                 map["sub_cat_id"] = toRequestBody(mainOne.id.toString())
             }
-            if (mBinding.spinnerEditTow.selectedItemPosition != 0){
+            if (mBinding.spinnerEditTow.selectedItemPosition != 0) {
                 map["sub_cat_id_2"] = toRequestBody(mainTow.id.toString())
             }
         }
@@ -578,7 +586,7 @@ class EditStoreFragment : Fragment(),
 //            return
 //        }
 
-        if (cityAdapter.data.size == 0) {
+        if (cityAdapter.data.size == 0 && mBinding.spnnerDelivery.selectedItemPosition == 1) {
             Snackbar.make(
                 requireView(),
                 getString(R.string.errorGovernorate),
@@ -587,7 +595,7 @@ class EditStoreFragment : Fragment(),
             return
         }
 
-        if (regionAdapter.data.size == 0) {
+        if (regionAdapter.data.size == 0 && mBinding.spnnerDelivery.selectedItemPosition == 1) {
             Snackbar.make(
                 requireView(),
                 getString(R.string.errorRegion),
@@ -654,7 +662,7 @@ class EditStoreFragment : Fragment(),
         map["delivery_time"] = toRequestBody(deliveryTime.id.toString())
         map["min_order"] = toRequestBody(price)
 
-        if (mBinding.spnnerDelivery.selectedItemPosition == 1){
+        if (mBinding.spnnerDelivery.selectedItemPosition == 1) {
             for ((i, cities) in cityAdapter.data.withIndex()) {
 
                 map["cities[$i][city_id]"] = toRequestBody((cities as Data).id.toString())

@@ -1,10 +1,12 @@
 package com.nurbk.ps.homebusness.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Toast
 import com.nurbk.ps.homebusness.R
 import com.nurbk.ps.homebusness.model.Country.Data
 import com.nurbk.ps.homebusness.model.Country.Region
@@ -26,6 +28,7 @@ class SpinnerRegionAdapter(var dataSource: List<*>, var type: Int) : BaseAdapter
     }
 
     override fun getItemId(i: Int): Long {
+        Log.e("hdhd", "getItemId: ${dataSource[i]}")
         return when (type) {
             1 -> (dataSource[i] as Data).id.toLong()
             3 -> (dataSource[i] as com.nurbk.ps.homebusness.model.delivery.DataX).id.toLong()

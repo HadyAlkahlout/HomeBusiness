@@ -125,7 +125,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-core:17.5.1'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx:19.1.1'
-//recyclerview-swipedecorator
+
+    //recyclerview-swipedecorator
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
+
+    // Image Watermark
+    implementation 'com.huangyz0918:androidwm:0.2.3'
 
 }

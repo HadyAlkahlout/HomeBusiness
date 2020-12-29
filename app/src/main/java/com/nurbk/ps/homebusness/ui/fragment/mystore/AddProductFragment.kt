@@ -2,6 +2,9 @@ package com.nurbk.ps.homebusness.ui.fragment.mystore
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -30,11 +33,16 @@ import com.nurbk.ps.homebusness.util.Constant.getRealPathFromURI
 import com.nurbk.ps.homebusness.util.Constant.showDialog
 import com.nurbk.ps.homebusness.util.Constant.toRequestBody
 import com.nurbk.ps.homebusness.util.Resource
+import com.watermark.androidwm.WatermarkBuilder
+import com.watermark.androidwm.bean.WatermarkImage
+import kotlinx.coroutines.CoroutineScope
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import timber.log.Timber
+import java.io.ByteArrayOutputStream
 import java.io.File
+
 
 class AddProductFragment : Fragment(), AddImageAdapter.CancelClick {
 
@@ -95,9 +103,9 @@ class AddProductFragment : Fragment(), AddImageAdapter.CancelClick {
                                     Snackbar.LENGTH_SHORT
                                 ).show()
 //                                viewModelCategories.getCategories().also {
-                                  findNavController().navigateUp()
+                                findNavController().navigateUp()
 //                                    findNavController().navigateUp()
-  //                              }
+                                //                              }
                             }
 
                         }
@@ -253,17 +261,39 @@ class AddProductFragment : Fragment(), AddImageAdapter.CancelClick {
 
 
             val file = data!!.data!!
-            adapterImage.data.add(Image(0, file.toString()))
+            var mainBitmap =
+                MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, file)
+            val watermarkBitmap = BitmapFactory.decodeResource(resources, R.drawable.logo_white)
+            val watermarkImage: WatermarkImage = WatermarkImage(watermarkBitmap)
+                .setPositionX(0.5)
+                .setPositionY(0.6)
+                .setSize(0.6)
+            var imageBitmap = WatermarkBuilder
+                .create(requireContext(), mainBitmap)
+                .loadWatermarkImage(watermarkImage)
+                .watermark
+                .outputImage
+
+            val bytes = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+            val path = MediaStore.Images.Media.insertImage(
+                requireActivity().contentResolver,
+                imageBitmap,
+                "Title",
+                null
+            )
+            var uri = Uri.parse(path)
+
+            adapterImage.data.add(Image(0, uri.toString()))
             adapterImage.notifyDataSetChanged()
 
 
-            updateImage.add(file.toString())
+            updateImage.add(uri.toString())
             mBinding.rcDataImageAddCase.visibility = View.VISIBLE
 
         }
 
     }
-
 
     private fun uploadData(i: Int) {
         val name = mBinding.productName.text.toString()

@@ -71,28 +71,16 @@ class StoreDetailsFragment : Fragment(), SettingDialogFragment.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         setUpStatusBar(requireActivity(), 2)
-
         (requireActivity() as MainActivity).setSupportActionBar(toolbar)
 
         mBinding.toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
-
         val ratingsFragment = RatingsFragment(ArrayList(), idMarket)
         val mostWantedFragment = MostWantedFragment(ArrayList(), idMarket)
         val listFragment = ListFragment(ArrayList(), idMarket)
-
-
-
-
-
         storeId = requireArguments().getString(DETAILS_STORE, "")
-
-
-
         ratingStore.isEnabled = false
 
         viewModel.getStoreDetails(storeId).also {

@@ -2,6 +2,7 @@ package com.nurbk.ps.homebusness.ui.fragment.mystore
 
 import android.app.Activity
 import android.content.Context
+import android.content.CursorLoader
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -212,16 +213,17 @@ class MyStoreFragment : Fragment(), MyOrderAdapter.OnClickItem,
                                 ).show()
                                 viewModel.dataStatusLiveData.value = null
                             }
-
+                            Log.e("hdhd", "onViewCreated: ${response.data.toString()}")
                         }
                     }
                     is Resource.Error -> {
-
+                        Log.e("hdhd", "onViewCreated: ${response.message}")
+                        Constant.dialog.hide()
+                        Constant.dialog.dismiss()
                     }
                     is Resource.Loading -> {
                         Timber.d("onViewCreated-> Resource.Loading")
                         Constant.showDialog(requireActivity())
-
                     }
                 }
             })
@@ -246,9 +248,12 @@ class MyStoreFragment : Fragment(), MyOrderAdapter.OnClickItem,
 
     private fun selectImage() {
         val intent = Intent()
-        intent.type = "image/*"
+        intent.type = "image/png"
         intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constant.REQUEST_IMAGE_CODE)
+        startActivityForResult(
+            Intent.createChooser(intent, "Select Picture"),
+            Constant.REQUEST_IMAGE_CODE
+        )
     }
 
     private lateinit var file: Uri
@@ -258,11 +263,9 @@ class MyStoreFragment : Fragment(), MyOrderAdapter.OnClickItem,
             requestCode == Constant.REQUEST_IMAGE_CODE
         ) {
 
-            val image = data!!.extras!!["data"] as Bitmap?
+            val image = data!!.data.toString()
 
-            file = getImageUri(requireContext(), image!!)
-//            file = data?.data!!
-
+            file = Uri.parse(image)
 
             StoryDialogFragment(
                 this, file
@@ -271,24 +274,24 @@ class MyStoreFragment : Fragment(), MyOrderAdapter.OnClickItem,
 
     }
 
-    fun getImageUri(inContext: Context, inImage: Bitmap): Uri {
-        val bytes = ByteArrayOutputStream()
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-        val path = MediaStore.Images.Media.insertImage(
-            inContext.getContentResolver(),
-            inImage,
-            "Title",
-            null
-        )
-        return Uri.parse(path)
+    private fun getRealPathFromURI(contentUri: Uri): String {
+        val proj = arrayOf(MediaStore.Images.Media.DATA)
+        val loader =
+            CursorLoader(requireContext(), contentUri, proj, null, null, null)
+        val cursor = loader.loadInBackground()
+        val column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        cursor.moveToFirst()
+        val result = cursor.getString(column_index)
+        cursor.close()
+        return result
     }
 
     override fun onClickGo() {
-
-        val imagefile = File(Constant.getRealPathFromURI(requireContext(), file))
-        val reqBody = RequestBody.create("image".toMediaTypeOrNull(), imagefile)
+        val imageFile =
+            File(getRealPathFromURI(file))
+        val reqBody = RequestBody.create("image".toMediaTypeOrNull(), imageFile)
         val partImage: MultipartBody.Part =
-            MultipartBody.Part.createFormData("image", imagefile.name, reqBody)
+            MultipartBody.Part.createFormData("image", imageFile.name, reqBody)
         viewModel.addStory(partImage)
     }
 }

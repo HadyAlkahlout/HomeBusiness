@@ -113,7 +113,7 @@
     <string name="ball">Ball</string>
     <string name="share">Share</string>
     <string name="add_cart">Add Cart</string>
-    <string name="dk">KWD %s</string>
+    <string name="dk">KWD</string>
     <string name="contact">Contact the store</string>
     <string name="whatsApp">Send WhatsApp</string>
     <string name="SendingaMessage">Sending a Message</string>
@@ -196,7 +196,8 @@
     <string name="search">Search</string>
     <string name="searchResult">There are no search results</string>
     <string name="emptyStore">There are no meals in this store</string>
-    <string name="buyStore">You cannot buy from more than one store at the same time</string>
+    <string name="buyStore">You cannot add products from more than one store in the cart. Do you want to remove the contents of the current cart and add new ones?</string>
+    <string name="go_cart">Go To The Cart</string>
     <string name="paymentCart">Your payment was successful</string>
     <string name="pleasetryagain">Please turn on GPS</string>
     <string name="tryagain">Try again</string>
