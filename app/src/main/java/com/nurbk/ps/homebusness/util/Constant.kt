@@ -6,6 +6,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.CursorLoader
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.net.Uri
 import android.provider.MediaStore
@@ -24,6 +25,7 @@ import com.nurbk.ps.homebusness.R
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import timber.log.Timber
+import java.util.*
 
 
 object Constant {
@@ -71,6 +73,15 @@ object Constant {
             .placeholder(ivPaceHolder)
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .into(iv)
+    }
+
+    fun setLanguage(lang: String, context: Context) {
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        context.resources
+            .updateConfiguration(config, context.resources.displayMetrics)
     }
 
 

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -41,6 +42,7 @@ import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.item_design_home_story.view.*
 import omari.hamza.storyview.StoryView
+import omari.hamza.storyview.callback.StoryClickListeners
 import omari.hamza.storyview.model.MyStory
 import timber.log.Timber
 import java.util.*
@@ -69,6 +71,8 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
     private val getShare by lazy {
         Constant.getSharePref(requireContext())
     }
+
+    private var builder : StoryView.Builder? = null
 
     private val adapterSpacialStores =
         HomeStoreAdapter(ArrayList(), 1, object : HomeStoreAdapter.OnClickListener {
@@ -107,13 +111,14 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
                 )
             }
         })
+
     private val adapterSpacialMeals = HomeMealAdapter(ArrayList(), 0, this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mBinding = FragmentHomeBinding.inflate(inflater, container, false).apply {
             executePendingBindings()
         }
@@ -122,30 +127,28 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         handelDynamicLink()
-
     }
 
     private fun handelDynamicLink() {
-        FirebaseDynamicLinks.getInstance().getDynamicLink(requireActivity().intent).addOnSuccessListener {
-            if (it != null) {
-                val link = it.link
-                val id = link!!.encodedQuery!!.subSequence(8, link.encodedQuery!!.length).toString()
-                val bundle = Bundle()
-                bundle.putString(DETAILS_STORE, id)
-                findNavController().navigate(
-                    R.id.action_homeFragment_to_storeDetailsFragment,
-                    bundle
-                )
+        FirebaseDynamicLinks.getInstance().getDynamicLink(requireActivity().intent)
+            .addOnSuccessListener {
+                if (it != null) {
+                    val link = it.link
+                    val id =
+                        link!!.encodedQuery!!.subSequence(8, link.encodedQuery!!.length).toString()
+                    val bundle = Bundle()
+                    bundle.putString(DETAILS_STORE, id)
+                    findNavController().navigate(
+                        R.id.action_homeFragment_to_storeDetailsFragment,
+                        bundle
+                    )
+                }
             }
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         mBinding.clFCM.setOnClickListener {
             if (getShare.getString(TOKEN, "")
                 != null && getShare.getString(TOKEN, "").toString().isNotEmpty()
@@ -174,9 +177,6 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
                 ).show()
             }
         }
-
-
-
 
         viewModel.dataHomeLiveData.observe(viewLifecycleOwner, Observer {
             when (it) {
@@ -223,7 +223,6 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
                                 }
                                 this.notifyDataSetChanged()
                             }
-
 
                             //adapterSpacialMeals
                             adapterNewMeals.apply {
@@ -276,8 +275,6 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
                 }
             }
         })
-
-
 
         if (getShare.getString(TOKEN, "") == null && getShare.getString(TOKEN, "").toString()
                 .isNotEmpty()
@@ -341,7 +338,8 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
                             if (data.status) {
                                 if (data.data != null) {
                                     getShare.edit()
-                                        .putString(MARKET_ID,
+                                        .putString(
+                                            MARKET_ID,
                                             data.data.data!![0].marketId.toString()
                                         ).apply()
                                 }
@@ -387,10 +385,7 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
             bundle.putString(SEARCH, searchQuery)
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment, bundle)
         }
-
-
     }
-
 
     private fun loadSpacialStores() {
         rcSpacialStores.apply {
@@ -436,7 +431,6 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
         }
     }
 
-
     private fun banner(imageView: ImageView, uriImage: String, uri: String) {
         imageView.apply {
             Constant.setImage(
@@ -457,22 +451,44 @@ class HomeFragment : Fragment(), HomeStoryAdapter.OnViewStory, HomeMealAdapter.O
 
     }
 
-
     override fun onView(data: Stories) {
         val currentStory = MyStory(
             data.image, Calendar.getInstance().time,
         )
 
-        StoryView.Builder(requireActivity().supportFragmentManager)
+        builder = StoryView.Builder(requireActivity().supportFragmentManager)
             .setStoriesList(arrayListOf(currentStory)) // Required
-            .setStoryDuration(15000) // Default is 2000 Millis (2 Seconds)
+            .setStoryDuration(10000) // Default is 2000 Millis (2 Seconds)
+            .setTitleText(data.marketName) // Default is Hidden
+            .setTitleLogoUrl(data.marketImage) // Default is Hidden
+            .setStoryClickListeners(object : StoryClickListeners {
+                override fun onDescriptionClickListener(position: Int) {
+
+                }
+
+                override fun onTitleIconClickListener(position: Int) {
+                    val bundle = Bundle()
+                    bundle.putString(DETAILS_STORE, data.id.toString())
+                    findNavController().navigate(
+                        R.id.action_homeFragment_to_storeDetailsFragment,
+                        bundle
+                    )
+                }
+            })
             .build() // Must be called before calling show method
-            .show()
+        builder!!.show()
     }
 
     override fun onClickItem(data: NewProduct) {
         val bundle = Bundle()
         bundle.putString(DETAILS_PRODUCT, data.id.toString())
         findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, bundle)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (builder != null){
+            builder!!.dismiss()
+        }
     }
 }

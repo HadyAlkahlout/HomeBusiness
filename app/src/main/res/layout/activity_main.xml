@@ -47,7 +47,7 @@
             android:background="@color/navColor"
             app:itemIconTint="@color/color_nav"
             app:itemTextColor="@color/color_nav"
-            app:labelVisibilityMode="auto"
+            app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

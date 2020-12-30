@@ -16,6 +16,7 @@ import com.nurbk.ps.homebusness.ui.fragment.dialog.ProblemDialogFragment
 import com.nurbk.ps.homebusness.ui.fragment.dialog.UpdateDialogFragment
 import com.nurbk.ps.homebusness.ui.viewmodel.auth.SplashState
 import com.nurbk.ps.homebusness.ui.viewmodel.auth.SplashViewModel
+import com.nurbk.ps.homebusness.util.Constant
 import com.nurbk.ps.homebusness.util.Resource
 import kotlinx.android.synthetic.main.activity_splash.*
 import timber.log.Timber
@@ -27,15 +28,16 @@ class SplashActivity : AppCompatActivity(), UpdateDialogFragment.GoFragmentMessa
     val viewModel by lazy {
         ViewModelProvider(this)[SplashViewModel::class.java]
     }
+    private val share by lazy {
+        Constant.getSharePref(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-
         super.onCreate(savedInstanceState)
         mBinding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-
+        Constant.setLanguage(share.getString(Constant.LANG, "ar").toString(), this)
         val pInfo = packageManager.getPackageInfo(packageName, 0)
         val version = pInfo.versionCode
 

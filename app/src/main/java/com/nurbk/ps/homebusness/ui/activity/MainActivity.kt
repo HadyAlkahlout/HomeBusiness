@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(mBinding.root)
 
 
-        AuthActivity.setLanguage(share.getString(Constant.LANG, "ar").toString(), this)
+        Constant.setLanguage(share.getString(Constant.LANG, "ar").toString(), this)
 
 
         val navHostFragment = supportFragmentManager

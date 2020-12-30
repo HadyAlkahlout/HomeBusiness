@@ -66,14 +66,69 @@ class MyStoreFragment : Fragment(), MyOrderAdapter.OnClickItem,
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         mBinding = FragmentMyStoreBinding.inflate(inflater, container, false).apply {
             executePendingBindings()
         }
         return mBinding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getMyOrder()
+        viewModel.dataMyOrderLiveData.observe(viewLifecycleOwner, Observer { response ->
+            Timber.e(" onViewCreated->viewModel")
+            when (response) {
+                is Resource.Success -> {
+                    Timber.e(" onViewCreated->Resource.Success")
+                    response.data?.let { data ->
+                        adapter.data.clear()
+                        adapter.data.addAll(data.data.data)
+                        adapter.notifyDataSetChanged()
+                        if (data.status) {
+                            Log.e("eee order", data.data.toString())
+                            Timber.e("eee success ${data.data.data}")
+                        }
+                    }
+                }
+                is Resource.Error -> {
+                    Log.e("eee error", response.message.toString())
+
+                }
+                is Resource.Loading -> {
+                    Log.e("eee error", response.message.toString())
+                }
+            }
+        })
+
+        viewModel.getMyProduct()
+        viewModel.dataMyProductLiveData.observe(viewLifecycleOwner, Observer { response ->
+            Timber.e(" onViewCreated->viewModel")
+            when (response) {
+                is Resource.Success -> {
+                    Timber.e(" onViewCreated->Resource.Success")
+                    response.data?.let { data ->
+                        if (data.data != null) {
+                            adapter_product.data.clear()
+                            adapter_product.data.addAll(data.data.data)
+                            adapter_product.notifyDataSetChanged()
+                        }
+                        if (data.status) {
+                            Timber.e("eee success ${data.data}")
+                        }
+                    }
+                }
+                is Resource.Error -> {
+
+                }
+                is Resource.Loading -> {
+                }
+            }
+        })
+
+        list_my_product.adapter = adapter_product
+        list_my_order.adapter = adapter
     }
 
 
@@ -119,58 +174,6 @@ class MyStoreFragment : Fragment(), MyOrderAdapter.OnClickItem,
 
         viewModelCate.getSubCategories(data.catId.toString())
 
-        viewModel.dataMyOrderLiveData.observe(viewLifecycleOwner, Observer { response ->
-            Timber.e(" onViewCreated->viewModel")
-            when (response) {
-                is Resource.Success -> {
-                    Timber.e(" onViewCreated->Resource.Success")
-                    response.data?.let { data ->
-                        adapter.data.clear()
-                        adapter.data.addAll(data.data.data)
-                        adapter.notifyDataSetChanged()
-                        if (data.status) {
-                            Log.e("eee order", data.data.toString())
-                            Timber.e("eee success ${data.data.data}")
-                        }
-                    }
-                }
-                is Resource.Error -> {
-                    Log.e("eee error", response.message.toString())
-
-                }
-                is Resource.Loading -> {
-                    Log.e("eee error", response.message.toString())
-                }
-            }
-        })
-
-
-        viewModel.dataMyProductLiveData.observe(viewLifecycleOwner, Observer { response ->
-            Timber.e(" onViewCreated->viewModel")
-            when (response) {
-                is Resource.Success -> {
-                    Timber.e(" onViewCreated->Resource.Success")
-                    response.data?.let { data ->
-                        if (data.data != null) {
-                            adapter_product.data.clear()
-                            adapter_product.data.addAll(data.data.data)
-                            adapter_product.notifyDataSetChanged()
-                        }
-                        if (data.status) {
-                            Timber.e("eee success ${data.data}")
-                        }
-                    }
-                }
-                is Resource.Error -> {
-
-                }
-                is Resource.Loading -> {
-                }
-            }
-        })
-
-
-
         btn_move_edit_products.setOnClickListener {
             findNavController().navigate(R.id.action_myStoreFragment_to_myProductFragment)
 
@@ -183,9 +186,6 @@ class MyStoreFragment : Fragment(), MyOrderAdapter.OnClickItem,
                 TamezMarketFragment(this, 2).show(childFragmentManager, "")
             }
         }
-
-        list_my_product.adapter = adapter_product
-        list_my_order.adapter = adapter
 
         btn_move_to_add_product.setOnClickListener {
             findNavController().navigate(

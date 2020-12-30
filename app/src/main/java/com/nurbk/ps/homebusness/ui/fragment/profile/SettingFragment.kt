@@ -63,13 +63,13 @@ class SettingFragment : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if (id == 0.toLong()){
                     if (share.getString(Constant.LANG,"") != "ar") {
-                        AuthActivity.setLanguage("ar", requireContext())
+                        Constant.setLanguage("ar", requireContext())
                         edit.putString(Constant.LANG, "ar").apply()
                         requireActivity().recreate()
                     }
                 }else{
                     if (share.getString(Constant.LANG,"") != "en") {
-                        AuthActivity.setLanguage("en", requireContext())
+                        Constant.setLanguage("en", requireContext())
                         edit.putString(Constant.LANG, "en").apply()
                         requireActivity().recreate()
                     }
@@ -79,7 +79,7 @@ class SettingFragment : Fragment() {
 
         switch1.isChecked = share.getBoolean(NoteficationStatus,false)
 
-        switch1.setOnCheckedChangeListener { buttonView, isChecked ->
+        switch1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked){
                 edit.putBoolean(NoteficationStatus,true)
             }else{

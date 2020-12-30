@@ -51,15 +51,9 @@ class MyProductFragment : Fragment(), MyProductAdapter.OnClickItem,
         return mBinding.root
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-        toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
-        }
-
+    override fun onResume() {
+        super.onResume()
+        viewModel.getMyProduct()
         viewModel.dataMyProductLiveData.observe(viewLifecycleOwner, Observer { response ->
             Timber.e(" onViewCreated->viewModel")
             when (response) {
@@ -94,7 +88,15 @@ class MyProductFragment : Fragment(), MyProductAdapter.OnClickItem,
             }
         })
 
+        list_myProduct.adapter = adapter_product
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
 
         viewModel.dataChangeStatusLiveData.observe(viewLifecycleOwner, Observer { response ->
             Timber.e(" onViewCreated->viewModel")
@@ -117,8 +119,6 @@ class MyProductFragment : Fragment(), MyProductAdapter.OnClickItem,
                 }
             }
         })
-
-        list_myProduct.adapter = adapter_product
 
         mBinding.btnMoveToAddProduct.setOnClickListener {
             findNavController().navigate(

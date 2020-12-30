@@ -52,7 +52,7 @@ class LoginFragment : Fragment(), CountryDialogFragment.OnClickCountry {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        AuthActivity.setLanguage(share.getString(LANG, "ar").toString(), requireContext())
+        Constant.setLanguage(share.getString(LANG, "ar").toString(), requireContext())
 
     }
 

@@ -89,7 +89,7 @@ class AddProductFragment : Fragment(), AddImageAdapter.CancelClick {
 
         viewModel.dataStatusLiveData.observe(
             viewLifecycleOwner,
-            androidx.lifecycle.Observer { response ->
+            { response ->
                 Timber.d(" onViewCreated->viewModel")
                 when (response) {
                     is Resource.Success -> {
@@ -102,10 +102,7 @@ class AddProductFragment : Fragment(), AddImageAdapter.CancelClick {
                                     "تم الإضافة بنجاح",
                                     Snackbar.LENGTH_SHORT
                                 ).show()
-//                                viewModelCategories.getCategories().also {
                                 findNavController().navigateUp()
-//                                    findNavController().navigateUp()
-                                //                              }
                             }
 
                         }
